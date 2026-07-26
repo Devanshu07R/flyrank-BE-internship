@@ -25,7 +25,7 @@ Every new assignment introduces new backend concepts, technologies, architectura
 | Week 2 | **BE-01** | Build Your First CRUD API | ✅ Completed |
 | Week 3 | **BE-04** | Containerize Your Stack | ✅ Completed |
 | Week 3 | **BE-02** | Connecting to the Database | ✅ Completed |
-| Week 4 | **BE-03** | Auth - Login & protect | 🔜 |
+| Week 4 | **BE-03** | Auth - Login & protect | ✅ Completed |
 | Week 4 | TBD | Future Assignment | 🔜 |
 
 ---
