@@ -40,7 +40,7 @@ def login(user: UserLogin):
        
     except Exception as e:
         raise HTTPException(
-            status_code=400,
+            status_code=401,
             detail="Invalid email or password."
         )
     
