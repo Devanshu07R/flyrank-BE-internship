@@ -76,7 +76,7 @@ task-api-auth/
 Clone the repository
 
 ```bash
-git clone <repository-url>
+git clone <https://github.com/Devanshu07R/flyrank-BE-internship.git>
 ```
 
 Move into the project
