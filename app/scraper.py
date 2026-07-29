@@ -3,6 +3,7 @@ import time
 from urllib.robotparser import RobotFileParser
 from urllib.parse import urljoin 
 from bs4 import BeautifulSoup
+import json
 
 USER_AGENT = "FlyRank-Backend-Internship/1.0 (Devanshu Dasgupta)"
 
@@ -16,6 +17,7 @@ def can_fetch(url: str):
 def fetch_page(url: str):
     
     if not can_fetch(url):
+    
         return {
             "status": "blocked",
             "message": "robots.txt does not allow scraping"
@@ -47,7 +49,8 @@ def fetch_page(url: str):
                 "rating": rating
             }
         )
-        
+    with open("books.json", "w", encoding="utf-8") as file:
+          json.dump(books, file, indent=4, ensure_ascii=False)
     return {
             "status": response.status_code,
             "count": len(books),
