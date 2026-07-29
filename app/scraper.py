@@ -2,6 +2,7 @@ import requests
 import time
 from urllib.robotparser import RobotFileParser
 from urllib.parse import urljoin 
+from bs4 import BeautifulSoup
 
 USER_AGENT = "FlyRank-Backend-Internship/1.0 (Devanshu Dasgupta)"
 
@@ -27,8 +28,28 @@ def fetch_page(url: str):
     time.sleep(1)
         
     response = requests.get(url, headers=headers)
+    
+    soup = BeautifulSoup(response.text, "lxml")
+    
+    books = []
+    
+    for book in soup.find_all("article", class_ = "product_pod"):
+        title = book.h3.a["title"]
+        price = book.select_one(".price_color").text
+        availability = book.select_one(".availability").text.strip()
+        rating = book.p["class"][1]
+        
+        books.append(
+            {
+                "title": title,
+                "price": price,
+                "availability": availability,
+                "rating": rating
+            }
+        )
         
     return {
             "status": response.status_code,
-            "html": response.text
+            "count": len(books),
+            "books": books
         }
