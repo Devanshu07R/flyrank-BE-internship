@@ -8,7 +8,7 @@
 
 > Add a screenshot of your Swagger UI here after running the project.
 
-![Swagger UI](images/swagger-ui.png)
+![Swagger UI](images/Screenshot 2026-07-30 064937.png)
 
 ---
 
