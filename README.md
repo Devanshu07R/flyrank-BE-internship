@@ -1,15 +1,23 @@
 # 📚 Week 5 – Polite Web Scraper
 
-A professional and ethical web scraper built with **FastAPI**, **Requests**, and **BeautifulSoup** that collects structured book data from the **Books to Scrape** practice website while respecting web scraping best practices such as `robots.txt`, custom `User-Agent`, and polite rate limiting.
+> A professional and ethical web scraper built with **FastAPI**, **Requests**, and **BeautifulSoup** that extracts structured book data while respecting web scraping best practices such as `robots.txt`, custom `User-Agent`, and polite rate limiting.
+
+---
+
+## 📸 API Preview
+
+> Add a screenshot of your Swagger UI here after running the project.
+
+![Swagger UI](images/swagger-ui.png)
 
 ---
 
 ## 🚀 Features
 
 - ✅ FastAPI REST API
-- ✅ Ethical scraping with `robots.txt`
-- ✅ Custom User-Agent identification
-- ✅ Polite 1-second request delay
+- ✅ Ethical web scraping with `robots.txt`
+- ✅ Custom `User-Agent` identification
+- ✅ 1-second polite request delay
 - ✅ HTML parsing using BeautifulSoup
 - ✅ Extracts:
   - Book Title
@@ -17,8 +25,8 @@ A professional and ethical web scraper built with **FastAPI**, **Requests**, and
   - Rating
   - Availability
 - ✅ Cleans and normalizes extracted data
-- ✅ Saves structured records to `books.json`
-- ✅ Returns structured JSON response
+- ✅ Saves structured records into `books.json`
+- ✅ Returns structured JSON responses
 
 ---
 
@@ -46,46 +54,48 @@ week5-polite-scraper/
 ├── books.json
 ├── requirements.txt
 ├── .gitignore
-└── README.md
+├── README.md
+└── images/
+    └── swagger-ui.png
 ```
 
 ---
 
 ## ⚙️ Installation
 
-Clone the repository:
+### Clone the repository
 
 ```bash
 git clone https://github.com/Devanshu07R/flyrank-BE-internship.git
 ```
 
-Move to the project directory:
+### Navigate to the project
 
 ```bash
 cd week5-polite-scraper
 ```
 
-Create a virtual environment:
+### Create a virtual environment
 
 ```bash
 python -m venv venv
 ```
 
-Activate the environment:
+### Activate the virtual environment
 
-### Windows
+**Windows**
 
 ```bash
 venv\Scripts\activate
 ```
 
-Install dependencies:
+### Install dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-Run the server:
+### Start the FastAPI server
 
 ```bash
 uvicorn app.main:app --reload
@@ -93,7 +103,7 @@ uvicorn app.main:app --reload
 
 ---
 
-## 📌 API Endpoints
+## 🌐 API Endpoints
 
 ### Root
 
@@ -111,7 +121,7 @@ Returns a welcome message.
 GET /health
 ```
 
-Checks whether the API is running.
+Checks whether the API is running successfully.
 
 ---
 
@@ -121,7 +131,7 @@ Checks whether the API is running.
 GET /scrape
 ```
 
-Downloads the Books to Scrape homepage, extracts book information, cleans the data, stores it in `books.json`, and returns the structured dataset.
+Downloads the Books to Scrape homepage, extracts book information, cleans the dataset, stores it in `books.json`, and returns the structured JSON response.
 
 ---
 
@@ -149,31 +159,34 @@ Downloads the Books to Scrape homepage, extracts book information, cleans the da
 ## 🔄 Data Pipeline
 
 ```text
-Website
-   │
-   ▼
-Check robots.txt
-   │
-   ▼
-Polite Delay
-   │
-   ▼
-Download HTML
-   │
-   ▼
-Parse HTML
-   │
-   ▼
-Extract Book Data
-   │
-   ▼
-Clean & Normalize
-   │
-   ▼
-Save books.json
-   │
-   ▼
-Return JSON API
+Books to Scrape Website
+          │
+          ▼
+   Check robots.txt
+          │
+          ▼
+ Custom User-Agent
+          │
+          ▼
+  Polite Request Delay
+          │
+          ▼
+    Download HTML
+          │
+          ▼
+ Parse with BeautifulSoup
+          │
+          ▼
+ Extract Book Information
+          │
+          ▼
+ Clean & Normalize Data
+          │
+          ▼
+   Save to books.json
+          │
+          ▼
+ Return Structured JSON
 ```
 
 ---
@@ -182,13 +195,38 @@ Return JSON API
 
 This project demonstrates:
 
-- REST API development with FastAPI
+- Building REST APIs with FastAPI
 - Ethical web scraping practices
+- Working with HTTP requests
 - HTML parsing using BeautifulSoup
-- Data extraction using CSS selectors
+- CSS selector-based data extraction
 - Data cleaning and normalization
 - JSON serialization
 - Building reusable backend data pipelines
+
+---
+
+## 🎯 Assignment Objectives Achieved
+
+- ✅ Respect website `robots.txt`
+- ✅ Use a custom `User-Agent`
+- ✅ Implement polite scraping with rate limiting
+- ✅ Extract structured information from HTML
+- ✅ Clean and normalize extracted data
+- ✅ Save structured data locally
+- ✅ Expose functionality through a REST API
+
+---
+
+## 🚀 Future Improvements
+
+- Support scraping multiple pages automatically
+- Accept dynamic URLs as query parameters
+- Store data in SQLite/PostgreSQL
+- Export to CSV and Excel
+- Add structured logging
+- Schedule automated scraping jobs
+- Integrate with a Vector Database for Retrieval-Augmented Generation (RAG)
 
 ---
 
@@ -196,11 +234,10 @@ This project demonstrates:
 
 **Devanshu Dasgupta**
 
-Backend AI Engineering Intern (FlyRank AI)
+Backend AI Engineering Intern @ FlyRank AI
 
-GitHub: https://github.com/Devanshu07R
-
-LinkedIn: https://www.linkedin.com/in/devanshu-dasgupta/
+- GitHub: https://github.com/Devanshu07R
+- LinkedIn: https://www.linkedin.com/in/devanshu-dasgupta/
 
 ---
 
