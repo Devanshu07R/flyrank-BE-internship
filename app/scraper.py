@@ -4,8 +4,17 @@ from urllib.robotparser import RobotFileParser
 from urllib.parse import urljoin 
 from bs4 import BeautifulSoup
 import json
+from datetime import datetime
 
 USER_AGENT = "FlyRank-Backend-Internship/1.0 (Devanshu Dasgupta)"
+
+RATING_MAP = {
+    "One": 1,
+    "Two": 2,
+    "Three": 3,
+    "Four": 4,
+    "Five": 5
+}
 
 def can_fetch(url: str):
     rp = RobotFileParser()
@@ -36,19 +45,30 @@ def fetch_page(url: str):
     books = []
     
     for book in soup.find_all("article", class_ = "product_pod"):
+        
         title = book.h3.a["title"]
-        price = book.select_one(".price_color").text
-        availability = book.select_one(".availability").text.strip()
-        rating = book.p["class"][1]
+        
+        price_text = book.select_one(".price_color").text
+        price = float(price_text.replace("£", "").replace("Â",""))
+        
+        availability_text = book.select_one(".availability").text.strip()
+        availability = "In stock" in availability_text
+        
+        rating_text = book.p["class"][1]
+        rating = RATING_MAP.get(rating_text, 0)
         
         books.append(
             {
                 "title": title,
                 "price": price,
+                "currency": "GBP",
                 "availability": availability,
-                "rating": rating
+                "rating": rating,
+                "scraped_at": datetime.now().isoformat()
             }
         )
+        
+        # it takes the scrapes and convert into JSON file
     with open("books.json", "w", encoding="utf-8") as file:
           json.dump(books, file, indent=4, ensure_ascii=False)
     return {
